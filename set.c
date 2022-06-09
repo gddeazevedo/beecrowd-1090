@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+// Código feito por: Gabriel Dias, Gustavo Kanji, Nícolas Henriques
+
 #define ONE "um"
 #define TWO "dois"
 #define THREE "tres"

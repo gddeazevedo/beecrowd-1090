@@ -172,7 +172,7 @@ void count_sets_on_remainders(int card_deck[LENGTH][LENGTH], int* total_sets) {
         }
     }
 
-    if (remainder > 3 && remainder < 6) {
+    if (remainder > 3) {
         *total_sets += 1;
     }
 }

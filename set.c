@@ -64,8 +64,8 @@ int get_total_sets(int card_deck[LENGTH][LENGTH]) {
     int total_sets = 0;
     bool card_deck_has_all_cards = does_card_deck_has_all_cards(card_deck);
 
-    count_sets_on_cols(card_deck, &total_sets);
     count_sets_on_rows(card_deck, &total_sets);
+    count_sets_on_cols(card_deck, &total_sets);
     count_sets_on_main_diagonal(card_deck, &total_sets);
     count_sets_on_secondary_diagonal(card_deck, &total_sets);
     count_sets_on_same_index(card_deck, &total_sets);
@@ -80,23 +80,23 @@ int get_total_sets(int card_deck[LENGTH][LENGTH]) {
 }
 
 void count_sets_on_rows(int card_deck[LENGTH][LENGTH], int* total_sets) {
-    for (int number = 0; number < LENGTH; number++) {
-        while (card_deck[0][number] > 0 && card_deck[1][number] > 0 && card_deck[2][number] > 0) {
-            *total_sets += 1;
-            card_deck[0][number]--;
-            card_deck[1][number]--;
-            card_deck[2][number]--;
-        }
-    }
-}
-
-void count_sets_on_cols(int card_deck[LENGTH][LENGTH], int* total_sets) {
     for (int shape = 0; shape < LENGTH; shape++) {
         while (card_deck[shape][0] > 0 && card_deck[shape][1] > 0 && card_deck[shape][2] > 0) {
             *total_sets += 1;
             card_deck[shape][0]--;
             card_deck[shape][1]--;
             card_deck[shape][2]--;
+        }
+    }
+}
+
+void count_sets_on_cols(int card_deck[LENGTH][LENGTH], int* total_sets) {
+    for (int number = 0; number < LENGTH; number++) {
+        while (card_deck[0][number] > 0 && card_deck[1][number] > 0 && card_deck[2][number] > 0) {
+            *total_sets += 1;
+            card_deck[0][number]--;
+            card_deck[1][number]--;
+            card_deck[2][number]--;
         }
     }
 }

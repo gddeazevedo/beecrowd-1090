@@ -62,7 +62,6 @@ int main() {
 
 int get_total_sets(int card_deck[LENGTH][LENGTH]) {
     int total_sets = 0;
-    int remainder = 0;
     bool card_deck_has_all_cards = does_card_deck_has_all_cards(card_deck);
 
     count_sets_on_rows(card_deck, &total_sets);

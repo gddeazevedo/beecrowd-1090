@@ -2,7 +2,12 @@
 #include <string.h>
 #include <stdbool.h>
 
-// Código feito por: Gabriel Dias, Gustavo Kanji, Nícolas Henriques
+/**
+ * Authors:
+    * Gabriel Dias, gabriel.dias@aluno.cefet-rj.br
+    * Gustavo Kanji, gustaavokanji@gmail.com
+    * Nícolas Henriques, nicolas.bhenriques@gmail.com
+*/
 
 #define ONE "um"
 #define TWO "dois"

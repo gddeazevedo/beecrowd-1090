@@ -174,13 +174,25 @@ void count_sets_on_remainders(int card_deck[LENGTH][LENGTH], int* total_sets) {
     if (remainder > 3 && remainder < 6) {
         *total_sets += 1;
     } else if (remainder == 6){
+        /*
+            0 0 2
+            1 1 0
+            0 0 2
+        */
         if (card_deck[0][2] > 0 && card_deck[1][0] > 0 && card_deck[1][1] > 0 && card_deck[2][2] > 0) {
             *total_sets += 2;
         } else if (card_deck[0][0] > 0 && card_deck[1][1] > 0 && card_deck[1][2] > 0 && card_deck[2][0] > 0) {
             *total_sets += 2;
         } else if (card_deck[0][1] > 0 && card_deck[1][0] > 0 && card_deck[1][2] > 0 && card_deck[2][1] > 0) {
             *total_sets += 2;
-        } else {
+        } 
+        
+        /*
+            0 0 2
+            0 2 0
+            0 0 2
+        */
+        else {
             *total_sets += 1;
         }
     } else if (remainder > 6 && remainder < 9) {

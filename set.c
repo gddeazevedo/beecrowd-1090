@@ -49,7 +49,6 @@ void print_list(LinkedList* list);
 
 int main() {
     int total_of_cards = 0;
-    bool is_first_iteration = true;
     LinkedList* results = (LinkedList*) malloc(sizeof(LinkedList));
 
     while (true) {

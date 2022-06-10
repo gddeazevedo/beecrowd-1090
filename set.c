@@ -13,6 +13,9 @@
 #define ONE "um"
 #define TWO "dois"
 #define THREE "tres"
+#define CIRCLE 'c'
+#define TRIANGLE 't'
+#define SQUARE 'q'
 #define LENGTH 3
 
 
@@ -246,13 +249,13 @@ int map_card_number_to_index(char* card_number) {
 }
 
 int map_card_form_to_index(char* card_form) {
-    if (card_form[0] == 'c') {
+    if (card_form[0] == CIRCLE) {
         return 0;
     }
-    if (card_form[0] == 't') {
+    if (card_form[0] == TRIANGLE) {
         return 1;
     }
-    if (card_form[0] == 'q') {
+    if (card_form[0] == SQUARE) {
         return 2;
     }
 }

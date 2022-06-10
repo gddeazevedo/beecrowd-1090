@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 /**
  * Authors:
@@ -14,6 +15,20 @@
 #define THREE "tres"
 #define LENGTH 3
 
+
+struct node {
+    int data;
+    struct node* next;
+};
+
+typedef struct node Node;
+
+typedef struct {
+    Node* head;
+    Node* tail;
+} LinkedList;
+
+
 int map_card_number_to_index(char* card_number);
 int map_card_form_to_index(char* card_form);
 int get_total_sets(int card_deck[LENGTH][LENGTH]);
@@ -25,12 +40,14 @@ void count_sets_on_secondary_diagonal(int card_deck[LENGTH][LENGTH], int* total_
 void count_sets_on_same_index(int card_deck[LENGTH][LENGTH], int* total_sets);
 void count_sets_on_different_indexes(int card_deck[LENGTH][LENGTH], int* total_sets);
 void count_sets_on_remainders(int card_deck[LENGTH][LENGTH], int* total_sets);
+void append(LinkedList* list, int data);
+void print_list(LinkedList* list);
+
 
 int main() {
     int total_of_cards = 0;
     bool is_first_iteration = true;
-    int results[100000];
-    int counter = 0;
+    LinkedList* results = (LinkedList*) malloc(sizeof(LinkedList));
 
     while (true) {
         scanf("%d", &total_of_cards);
@@ -56,13 +73,11 @@ int main() {
         }
 
         int total_sets = get_total_sets(card_deck);
-        results[counter] = total_sets;
-        counter++;
+        append(results, total_sets);
     }
 
-    for (int i = 0; i < counter; i++) {
-        printf("%d\n", results[i]);
-    }
+    print_list(results);
+    free(results);
 
     return 0;
 }
@@ -193,7 +208,7 @@ void count_sets_on_remainders(int card_deck[LENGTH][LENGTH], int* total_sets) {
         } else if (card_deck[0][1] > 0 && card_deck[1][0] > 0 && card_deck[1][2] > 0 && card_deck[2][1] > 0) {
             *total_sets += 2;
         } 
-        
+
         /*
             0 0 2
             0 2 0
@@ -239,5 +254,26 @@ int map_card_form_to_index(char* card_form) {
     }
     if (card_form[0] == 'q') {
         return 2;
+    }
+}
+
+void append(LinkedList* list, int data) {
+    if (list->head == NULL) {
+        list->head = (Node*) malloc(sizeof(Node));
+        list->head->data = data;
+        list->tail = list->head;
+    } else {
+        list->tail->next = (Node*) malloc(sizeof(Node));
+        list->tail = list->tail->next;
+        list->tail->data = data;
+    }
+}
+
+void print_list(LinkedList* list) {
+    Node* aux = list->head;
+
+    while (aux != NULL) {
+        printf("%d\n", aux->data);
+        aux = aux->next;
     }
 }

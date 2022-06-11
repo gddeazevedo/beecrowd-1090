@@ -64,8 +64,8 @@ int main() {
             { 0, 0, 0 } // squares
         };
 
-        char card_number[10];
-        char card_form[15];
+       char card_number[5];
+       char card_form[11];
 
         for (int i = 0; i < total_of_cards; i++) {
             scanf("%s %s", card_number, card_form);

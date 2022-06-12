@@ -64,8 +64,8 @@ int main() {
             { 0, 0, 0 } // squares
         };
 
-       char card_number[5];
-       char card_form[11];
+        char card_number[5];
+        char card_form[11];
 
         for (int i = 0; i < total_of_cards; i++) {
             scanf("%s %s", card_number, card_form);
@@ -189,9 +189,7 @@ void count_sets_on_remainders(int card_deck[LENGTH][LENGTH], int* total_sets) {
 
     for (int i = 0; i < LENGTH; i++) {
         for (int j = 0; j < LENGTH; j++) {
-            if (card_deck[i][j] == 1 || card_deck[i][j] == 2) {
-                remainder += card_deck[i][j];
-            }
+            remainder += card_deck[i][j];
         }
     }
 

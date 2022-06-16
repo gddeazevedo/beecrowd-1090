@@ -35,7 +35,7 @@ typedef struct {
 int map_card_number_to_index(char* card_number);
 int map_card_form_to_index(char* card_form);
 int get_total_sets(int card_deck[LENGTH][LENGTH]);
-bool does_card_deck_has_all_cards(int card_deck[LENGTH][LENGTH]);
+bool does_card_deck_have_all_cards(int card_deck[LENGTH][LENGTH]);
 void count_sets_on_rows(int card_deck[LENGTH][LENGTH], int* total_sets);
 void count_sets_on_cols(int card_deck[LENGTH][LENGTH], int* total_sets);
 void count_sets_on_main_diagonal(int card_deck[LENGTH][LENGTH], int* total_sets);
@@ -54,7 +54,7 @@ int main() {
     while (true) {
         scanf("%d", &total_of_cards);
 
-        if (total_of_cards <= 0 || total_of_cards < 3 || total_of_cards > 3 * 10 * 10 * 10 * 10) {
+        if (total_of_cards < 3 || total_of_cards > 3 * 10 * 10 * 10 * 10) {
             break;
         }
 
@@ -86,7 +86,7 @@ int main() {
 
 int get_total_sets(int card_deck[LENGTH][LENGTH]) {
     int total_sets = 0;
-    bool card_deck_has_all_cards = does_card_deck_has_all_cards(card_deck);
+    bool card_deck_had_all_cards = does_card_deck_have_all_cards(card_deck);
 
     count_sets_on_rows(card_deck, &total_sets);
     count_sets_on_cols(card_deck, &total_sets);
@@ -96,7 +96,7 @@ int get_total_sets(int card_deck[LENGTH][LENGTH]) {
     count_sets_on_different_indexes(card_deck, &total_sets);
 
 
-    if (card_deck_has_all_cards) {
+    if (card_deck_had_all_cards) {
         count_sets_on_remainders(card_deck, &total_sets);
     }
 
@@ -126,7 +126,7 @@ void count_sets_on_cols(int card_deck[LENGTH][LENGTH], int* total_sets) {
 }
 
 void count_sets_on_main_diagonal(int card_deck[LENGTH][LENGTH], int* total_sets) {
-    while (card_deck[0][0] > 0 && card_deck[1][1] > 0 && card_deck[2][2]) {
+    while (card_deck[0][0] > 0 && card_deck[1][1] > 0 && card_deck[2][2] > 0) {
         *total_sets += 1;
         card_deck[0][0]--;
         card_deck[1][1]--;
@@ -222,7 +222,7 @@ void count_sets_on_remainders(int card_deck[LENGTH][LENGTH], int* total_sets) {
     }
 }
 
-bool does_card_deck_has_all_cards(int card_deck[LENGTH][LENGTH]) {
+bool does_card_deck_have_all_cards(int card_deck[LENGTH][LENGTH]) {
     for (int i = 0; i < LENGTH; i++) {
         for (int j = 0; j < LENGTH; j++) {
             if (card_deck[i][j] == 0)
